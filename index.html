@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Invitación XV · Juliana</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;font-family:Georgia,"Times New Roman",serif;background:#090b18;color:#fff}body{overflow:hidden}
+.screen{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden}
+#intro{background:radial-gradient(circle at 50% 35%,#27315c 0,#10152d 42%,#050610 100%);z-index:10;cursor:pointer}
+.stars{position:absolute;inset:0;background-image:radial-gradient(#fff8 1px,transparent 1px),radial-gradient(#fff6 1px,transparent 1px);background-size:90px 90px,140px 140px;background-position:10px 20px,60px 80px;opacity:.35}
+.envelope{width:min(82vw,430px);aspect-ratio:1.45/1;position:relative;filter:drop-shadow(0 25px 35px #0009);transition:transform .7s ease}
+.env-back{position:absolute;inset:0;border-radius:14px;background:linear-gradient(145deg,#d8c6ed,#8c6aaa 55%,#4d3d72);border:1px solid #fff8}
+.env-front{position:absolute;inset:auto 0 0;height:72%;background:linear-gradient(145deg,#a889c8,#594172);clip-path:polygon(0 0,50% 62%,100% 0,100% 100%,0 100%);border-radius:0 0 14px 14px}
+.flap{position:absolute;inset:0 0 auto;height:67%;background:linear-gradient(145deg,#eee4f7,#9e7abf);clip-path:polygon(0 0,100% 0,50% 92%);transform-origin:50% 0;transition:transform 1s cubic-bezier(.2,.8,.2,1);z-index:3;border-radius:14px 14px 0 0}
+.seal{position:absolute;z-index:5;left:50%;top:55%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:#f1d7fa;color:#65477c;font-size:27px;box-shadow:0 4px 15px #0005}
+.hint{position:absolute;bottom:8%;text-align:center;letter-spacing:2px;font-size:13px;opacity:.9}.hint b{display:block;font-size:20px;letter-spacing:3px;margin-bottom:8px}
+#intro.open .flap{transform:rotateX(175deg)}#intro.open .envelope{transform:translateY(8vh) scale(.88)}#intro.open .hint{opacity:0}
+.butterfly{position:absolute;width:54px;height:42px;opacity:0;z-index:20;pointer-events:none;filter:drop-shadow(0 6px 8px #0005)}
+.butterfly:before,.butterfly:after{content:"";position:absolute;top:2px;width:25px;height:36px;border-radius:80% 25% 70% 25%;background:linear-gradient(145deg,#fff,#e8c9ff 38%,#8c6fd1);border:1px solid #fff8}
+.butterfly:before{left:1px;transform:rotate(24deg);transform-origin:100% 70%}.butterfly:after{right:1px;transform:scaleX(-1) rotate(24deg);transform-origin:0 70%}
+.butterfly i{position:absolute;left:25px;top:5px;width:5px;height:33px;border-radius:5px;background:#b68ad7;z-index:2}
+.b1{left:10%;top:48%}.b2{left:75%;top:52%}.b3{left:45%;top:70%}.b4{left:25%;top:25%}.b5{left:62%;top:22%}.b6{left:86%;top:30%}
+#intro.open .butterfly{animation:fly 2.8s ease-out forwards}
+#intro.open .b1{animation-delay:.05s}#intro.open .b2{animation-delay:.15s}#intro.open .b3{animation-delay:.25s}#intro.open .b4{animation-delay:.35s}#intro.open .b5{animation-delay:.45s}#intro.open .b6{animation-delay:.55s}
+@keyframes fly{0%{opacity:0;transform:translate(0,0) scale(.35) rotate(0)}12%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.1) rotate(var(--r))}}
+.b1{--x:-35vw;--y:-45vh;--r:-30deg}.b2{--x:28vw;--y:-50vh;--r:40deg}.b3{--x:8vw;--y:-42vh;--r:-55deg}.b4{--x:-32vw;--y:-10vh;--r:50deg}.b5{--x:25vw;--y:-18vh;--r:-35deg}.b6{--x:-15vw;--y:-38vh;--r:65deg}
+#invitation{display:none;background:#050610;padding:14px;z-index:30;overflow:auto;align-items:center;justify-items:center}
+#invitation.show{display:grid;animation:fade .8s ease}
+#invitation img{display:block;width:auto;height:auto;max-width:100%;max-height:calc(100vh - 28px);object-fit:contain;border-radius:10px;box-shadow:0 10px 40px #0009}
+@keyframes fade{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.tapagain{position:fixed;right:12px;bottom:10px;background:#ffffff22;border:1px solid #fff3;color:#fff;padding:7px 10px;border-radius:20px;font:12px Arial;backdrop-filter:blur(5px)}
+@media(max-width:600px){.envelope{width:86vw}.seal{width:54px;height:54px}.hint b{font-size:17px}#invitation{padding:7px}#invitation img{max-height:calc(100vh - 14px);max-width:100%}}
+</style>
+</head>
+<body>
+<section id="intro" class="screen" aria-label="Abrir invitación">
+<div class="stars"></div>
+<div class="envelope"><div class="env-back"></div><div class="flap"></div><div class="env-front"></div><div class="seal">J</div></div>
+<div class="hint"><b>XV AÑOS</b>Toca la invitación para abrir</div>
+<div class="butterfly b1"><i></i></div><div class="butterfly b2"><i></i></div><div class="butterfly b3"><i></i></div><div class="butterfly b4"><i></i></div><div class="butterfly b5"><i></i></div><div class="butterfly b6"><i></i></div>
+</section>
+<section id="invitation" class="screen"><img src="invitacion.png" alt="Invitación de XV años de Juliana"><button class="tapagain" id="back">Volver a abrir</button></section>
+<script>
+const intro=document.getElementById('intro'),inv=document.getElementById('invitation'),back=document.getElementById('back');
+let opened=false;
+intro.addEventListener('click',()=>{if(opened)return;opened=true;intro.classList.add('open');setTimeout(()=>{intro.style.display='none';inv.classList.add('show');document.body.style.overflow='auto'},2600)});
+back.addEventListener('click',e=>{e.stopPropagation();opened=false;inv.classList.remove('show');intro.style.display='grid';intro.classList.remove('open');document.body.style.overflow='hidden'});
+</script>
+</body>
+</html>
